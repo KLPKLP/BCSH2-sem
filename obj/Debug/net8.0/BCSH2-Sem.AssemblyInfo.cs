@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BCSH2-SEM")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c41dabd615f9956554b800737aae638470c3ba0d")]
 [assembly: System.Reflection.AssemblyProductAttribute("BCSH2-SEM")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BCSH2-SEM")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

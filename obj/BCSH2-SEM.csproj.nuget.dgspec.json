@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\klara\\source\\repos\\BCSH2\\BCSH2-SEM\\BCSH2-SEM.csproj": {}
+    "C:\\Users\\klara\\source\\repos\\BCSH2\\BCSH2-Sem\\BCSH2-SEM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\klara\\source\\repos\\BCSH2\\BCSH2-SEM\\BCSH2-SEM.csproj": {
+    "C:\\Users\\klara\\source\\repos\\BCSH2\\BCSH2-Sem\\BCSH2-SEM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\klara\\source\\repos\\BCSH2\\BCSH2-SEM\\BCSH2-SEM.csproj",
+        "projectUniqueName": "C:\\Users\\klara\\source\\repos\\BCSH2\\BCSH2-Sem\\BCSH2-SEM.csproj",
         "projectName": "BCSH2-SEM",
-        "projectPath": "C:\\Users\\klara\\source\\repos\\BCSH2\\BCSH2-SEM\\BCSH2-SEM.csproj",
+        "projectPath": "C:\\Users\\klara\\source\\repos\\BCSH2\\BCSH2-Sem\\BCSH2-SEM.csproj",
         "packagesPath": "C:\\Users\\klara\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\klara\\source\\repos\\BCSH2\\BCSH2-SEM\\obj\\",
+        "outputPath": "C:\\Users\\klara\\source\\repos\\BCSH2\\BCSH2-Sem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\klara\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,40 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.5.1, )"
+            },
+            "LiteDB": {
+              "target": "Package",
+              "version": "[5.0.21, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

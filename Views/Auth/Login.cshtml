@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Přihlášení</h2>
+
+<form asp-action="Login" method="post">
+    <div>
+        <label for="login">Login:</label>
+        <input type="text" id="login" name="login" required />
+    </div>
+    <div>
+        <label for="password">Heslo:</label>
+        <input type="password" id="password" name="password" required />
+    </div>
+    <button type="submit">Přihlásit se</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <p style="color:red;">@ViewBag.Error</p>
+}
+
+<p>Nemáte účet? <a asp-action="Register">Registrujte se</a></p>

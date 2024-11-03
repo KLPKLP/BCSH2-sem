@@ -8,6 +8,7 @@ namespace BCSH2_SEM
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSession(); //povolit session
 
             var app = builder.Build();
 
@@ -22,6 +23,7 @@ namespace BCSH2_SEM
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession(); //povolit session
             app.UseRouting();
 
             app.UseAuthorization();

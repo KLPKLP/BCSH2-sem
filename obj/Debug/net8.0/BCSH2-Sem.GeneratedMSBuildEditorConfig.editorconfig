@@ -9,75 +9,83 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BCSH2_SEM
 build_property.RootNamespace = BCSH2_SEM
-build_property.ProjectDir = C:\Users\klara\source\repos\BCSH2\BCSH2-SEM\
+build_property.ProjectDir = C:\Users\klara\source\repos\BCSH2\BCSH2-Sem\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\klara\source\repos\BCSH2\BCSH2-SEM
+build_property.MSBuildProjectDirectory = C:\Users\klara\source\repos\BCSH2\BCSH2-Sem
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Pages/Error.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Pages/Index.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Pages/Privacy.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Pages/Shared/_LoginPartial.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Pages/_ViewImports.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Pages/_ViewStart.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Views/Home/Index.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Views/Auth/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Views/Home/Privacy.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Views/Shared/Error.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Views/_ViewImports.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Views/_ViewStart.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Pages/Shared/_Layout.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-6ir6dfm892
 
-[C:/Users/klara/source/repos/BCSH2/BCSH2-SEM/Views/Shared/_Layout.cshtml]
+[C:/Users/klara/source/repos/BCSH2/BCSH2-Sem/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-cnagu9433v
