@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
+
 namespace BCSH2_SEM
 {
     public class Program
@@ -5,6 +8,13 @@ namespace BCSH2_SEM
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var defaultCulture = new CultureInfo("cs-CZ");
+            var localizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(defaultCulture),
+                SupportedCultures = new List<CultureInfo> { defaultCulture },
+                SupportedUICultures = new List<CultureInfo> { defaultCulture }
+            };
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -30,7 +40,11 @@ namespace BCSH2_SEM
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+            // pattern: "{controller=Home}/{action=Index}/{id?}");
+             pattern: "{controller=Auth}/{action=Login}");
+
+
+            app.UseRequestLocalization(localizationOptions);
 
             app.Run();
         }

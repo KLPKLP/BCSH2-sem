@@ -1,0 +1,44 @@
+﻿@model BCSH2_SEM.Models.User
+
+<h2>Upravit údaje</h2>
+
+<form method="post" action="/User/Edit">
+    <div>
+        <label for="Name">Jméno:</label>
+        <input type="text" id="Name" name="Name" value="@Model.Name" required />
+    </div>
+
+    <div>
+        <label for="DateOfBirth">Datum narození:</label>
+        <input type="date" id="DateOfBirth" name="DateOfBirth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" required />
+    </div>
+
+    <div>
+        <label for="Gender">Pohlaví:</label>
+        <select id="Gender" name="Gender">
+            <option value="Male")>Muž</option>
+            <option value="Female")>Žena</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="Height">Výška (cm):</label>
+        <input type="number" id="Height" name="Height" value="@Model.Height" required />
+    </div>
+
+    <div>
+        <label for="Weight">Váha (kg):</label>
+        <input type="number" id="Weight" name="Weight" value="@Model.Weight" required />
+    </div>
+
+    <div>
+        <label for="MyGoal">Cíl:</label>
+        <select id="MyGoal" name="MyGoal">
+            <option value="Lose">Zhubnout</option>
+            <option value="Maintain">Udržet</option>
+            <option value="Gain">Přibrat</option>
+        </select>
+    </div>
+
+    <button type="submit">Uložit změny</button>
+</form>

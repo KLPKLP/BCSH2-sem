@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BCSH2_SEM.Models.Ingredient>
+
+@{
+    ViewBag.Title = "Seznam ingrediencí";
+}
+
+<h1>Ingredience</h1>
+
+<a href="@Url.Action("Add", "Ingredient")">Přidat ingredienci</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Název</th>
+            <th>Kalorie</th>
+            <th>Proteiny</th>
+            <th>Sacharidy</th>
+            <th>Tuky</th>
+            <th>Akce</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ingredient in Model)
+        {
+            <tr>
+                <td>@ingredient.Name</td>
+                <td>@ingredient.Calories</td>
+                <td>@ingredient.Proteins</td>
+                <td>@ingredient.Carbs</td>
+                <td>@ingredient.Fats</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Ingredient", new { id = ingredient.Id })">Upravit</a> |
+                    <a href="@Url.Action("Delete", "Ingredient", new { id = ingredient.Id })">Smazat</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,4 +1,4 @@
-html {
+/*html {
   font-size: 14px;
 }
 
@@ -19,4 +19,213 @@ html {
 
 body {
   margin-bottom: 60px;
+}*/
+
+/* Základní nastavení */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FAF3E0; /* Krémová bílá */
+    color: #333; /* Tmavì šedá pro text */
+    margin-bottom: 60px;
+}
+
+/* Nadpisy */
+h1, h2, h3, h4, h5, h6 {
+    color: #014d18; /* Pastelová zelená */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2.5rem;
+    border-bottom: 3px solid #FFD5A5; /* Pastelová oranžová linka */
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+/* Odkazy */
+a {
+    color: #014d18; /* Pastelová zelená */
+    text-decoration: none;
+}
+
+  /*  a:hover {
+        color: #FFD5A5; 
+        text-decoration: underline;
+    }*/
+
+/* Tlaèítka */
+/* Základní styl tlaèítek */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Tlaèítko Pøidat nový recept */
+.btn-create {
+    background-color: #014d18; /* Pastelová zelená */
+    color: white;
+}
+
+    .btn-create:hover {
+        background-color: #88c5a0; /* Tmavší pastelová zelená */
+    }
+
+/* Tlaèítko Editovat */
+.btn-edit {
+    background-color: #B8E3E6; /* Pastelová modrá */
+    color: white;
+}
+
+    .btn-edit:hover {
+        background-color: #96cdd1; /* Tmavší pastelová modrá */
+    }
+
+/* Tlaèítko Smazat */
+.btn-delete {
+    background-color: #FFD5A5; /* Pastelová oranžová */
+    color: white;
+}
+
+    .btn-delete:hover {
+        background-color: #ffba7c; /* Tmavší pastelová oranžová */
+    }
+
+/* Obecné hover a focus efekty */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Tabulky */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+  /*  background-color: #FFF7AE;*/ /* Pastelová žlutá */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #014d18; /* Pastelová zelená */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #FAF3E0; /* Krémová bílá */
+}
+
+tr:hover {
+    background-color: #FFD5A5; /* Pastelová oranžová */
+}
+
+/* Záhlaví stránky */
+header {
+    background-color: #014d18; /* Pastelová zelená */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Patka stránky */
+footer {
+    background-color: #014d18; /* Pastelová zelená */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Formuláøe */
+input[type="text"], input[type="password"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #FAF3E0; /* Krémová bílá */
+}
+
+    input:focus, textarea:focus, select:focus {
+        border-color: #014d18; /* Pastelová zelená */
+        box-shadow: 0 0 5px #A8D5BA;
+    }
+
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #014d18; /* Pastelová zelená */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    button:hover {
+        background-color: #88c5a0; /* Tmavší pastelová zelená */
+    }
+
+    button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+        transform: scale(1.05); /* Mírné zvìtšení pøi zamìøení */
+    }
+
+    /* Tlaèítko Resetovat hodnoty */
+    button[type="submit"]:nth-of-type(1) {
+        background-color: #A8D5BA; /* Pastelová oranžová */
+    }
+
+        button[type="submit"]:nth-of-type(1):hover {
+            background-color: #ffba7c; /* Tmavší pastelová oranžová */
+        }
+
+    /* Tlaèítko Pøidat spálené kalorie */
+    button[type="submit"]:nth-of-type(2) {
+        background-color: #B8E3E6; /* Pastelová modrá */
+    }
+
+        button[type="submit"]:nth-of-type(2):hover {
+            background-color: #96cdd1; /* Tmavší pastelová modrá */
+        }

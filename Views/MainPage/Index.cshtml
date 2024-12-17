@@ -1,0 +1,311 @@
+﻿@* @{
+    ViewBag.Title = "Hlavní stránka";
+}
+
+<h2>Můj denní přehled</h2>
+
+<div class="progress-container">
+    <div class="progress-item">
+        <label for="caloriesProgress">Kalorie:</label>
+        <progress id="caloriesProgress"
+                  value="@((int)ViewBag.ConsumedCalories)"
+                  max="@((int)ViewBag.DailyCalories)">
+        </progress>
+        <span id="caloriesText">@ViewBag.ConsumedCalories / @ViewBag.DailyCalories kcal</span>
+    </div>
+
+    <div class="progress-item">
+        <label for="proteinsProgress">Bílkoviny:</label>
+        <progress id="proteinsProgress"
+                  value="@((int)ViewBag.ConsumedProteins)"
+                  max="@((int)ViewBag.DailyProteins)">
+        </progress>
+        <span id="proteinsText">@ViewBag.ConsumedProteins / @ViewBag.DailyProteins g</span>
+    </div>
+
+    <div class="progress-item">
+        <label for="carbsProgress">Sacharidy:</label>
+        <progress id="carbsProgress"
+                  value="@((int)ViewBag.ConsumedCarbs)"
+                  max="@((int)ViewBag.DailyCarbs)">
+        </progress>
+        <span id="carbsText">@ViewBag.ConsumedCarbs / @ViewBag.DailyCarbs g</span>
+    </div>
+
+    <div class="progress-item">
+        <label for="fatsProgress">Tuky:</label>
+        <progress id="fatsProgress"
+                  value="@((int)ViewBag.ConsumedFats)"
+                  max="@((int)ViewBag.DailyFats)">
+        </progress>
+        <span id="fatsText">@ViewBag.ConsumedFats / @ViewBag.DailyFats g</span>
+    </div>
+</div>
+
+<div style="text-align: right; margin-top: 20px;">
+    <form method="post" action="/MainPage/ResetValues" style="display: inline;">
+        <button type="submit" >Vynulovat hodnoty</button>
+    </form>
+</div>
+
+<div style="margin-top: 40px;">
+    <form method="post" action="/MainPage/AddBurnedCalories" style="display: inline;">
+        <label for="burnedCaloriesInput">Zadejte počet spálených kalorií:</label>
+        <input type="number" id="burnedCaloriesInput" name="burnedCalories" min="0" required>
+        <button type="submit" >Přidat spálené kalorie</button>
+    </form>
+</div>
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    
+            const progressBars = [
+            { id: "caloriesProgress", max: @((int)ViewBag.DailyCalories) },
+            { id: "proteinsProgress", max: @((int)ViewBag.DailyProteins) },
+            { id: "carbsProgress", max: @((int)ViewBag.DailyCarbs) },
+            { id: "fatsProgress", max: @((int)ViewBag.DailyFats) },
+            ];
+
+            progressBars.forEach(pb => {
+                const progressElement = document.getElementById(pb.id);
+                const currentValue = parseInt(progressElement.getAttribute("value"));
+                const maxValue = pb.max;
+
+                if (currentValue > maxValue) {
+                    progressElement.classList.add("over-limit"); 
+                }
+            });
+        });
+
+</script>
+
+<style>
+    .progress-container {
+     /*    display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 500px;
+        margin: 0 auto; */
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 500px; /* Maximální šířka */
+        margin: 0; /* Zrušení auto-centrování */
+        padding: 0; /* Případné vycentrování z paddingu */
+    }
+
+    .progress-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    progress {
+        width: 100%;
+        height: 20px;
+        appearance: none;
+    }
+
+  
+        progress::-webkit-progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 10px;
+        }
+
+        progress::-webkit-progress-value {
+            background-color: #6acb6d;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        
+        progress.over-limit::-webkit-progress-value {
+            background-color: #f55b5b; 
+        }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    span {
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+</style> *@
+
+
+
+@{
+    ViewBag.Title = "Hlavní stránka";
+}
+
+<h2>Můj denní přehled</h2>
+
+<div class="main-container">
+    <!-- Levá část: Progressbary -->
+    <div class="progress-container">
+        <div class="progress-item">
+            <label for="caloriesProgress">Kalorie:</label>
+            <progress id="caloriesProgress" value="@((int)ViewBag.ConsumedCalories)" max="@((int)ViewBag.DailyCalories)"></progress>
+            <span id="caloriesText">@ViewBag.ConsumedCalories / @ViewBag.DailyCalories kcal</span>
+        </div>
+
+        <div class="progress-item">
+            <label for="proteinsProgress">Bílkoviny:</label>
+            <progress id="proteinsProgress" value="@((int)ViewBag.ConsumedProteins)" max="@((int)ViewBag.DailyProteins)"></progress>
+            <span id="proteinsText">@ViewBag.ConsumedProteins / @ViewBag.DailyProteins g</span>
+        </div>
+
+        <div class="progress-item">
+            <label for="carbsProgress">Sacharidy:</label>
+            <progress id="carbsProgress" value="@((int)ViewBag.ConsumedCarbs)" max="@((int)ViewBag.DailyCarbs)"></progress>
+            <span id="carbsText">@ViewBag.ConsumedCarbs / @ViewBag.DailyCarbs g</span>
+        </div>
+
+        <div class="progress-item">
+            <label for="fatsProgress">Tuky:</label>
+            <progress id="fatsProgress" value="@((int)ViewBag.ConsumedFats)" max="@((int)ViewBag.DailyFats)"></progress>
+            <span id="fatsText">@ViewBag.ConsumedFats / @ViewBag.DailyFats g</span>
+        </div>
+    </div>
+
+    <!-- Pravá část: Formuláře a tlačítka -->
+    <div class="actions-container">
+        <div class="action-item">
+            <form method="post" action="/MainPage/ResetValues" style="display: inline;">
+                <button type="submit">Vynulovat hodnoty</button>
+            </form>
+        </div>
+
+        <div class="action-item" style="margin-top: 40px;">
+            <form method="post" action="/MainPage/AddBurnedCalories" style="display: inline;">
+                <label for="burnedCaloriesInput">Zadejte počet spálených kalorií:</label>
+                <input type="number" id="burnedCaloriesInput" name="burnedCalories" min="0" required>
+                <button type="submit">Přidat spálené kalorie</button>
+            </form>
+        </div>
+
+        <div class="action-item" style="margin-top: 40px;">
+            <form method="get" action="/FoodLog/LogMeal" style="display: inline;">
+                <button type="submit">Aktualizovat jídelníček</button>
+            </form>
+        </div>
+
+        
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const progressBars = [
+            { id: "caloriesProgress", max: @((int)ViewBag.DailyCalories) },
+            { id: "proteinsProgress", max: @((int)ViewBag.DailyProteins) },
+            { id: "carbsProgress", max: @((int)ViewBag.DailyCarbs) },
+            { id: "fatsProgress", max: @((int)ViewBag.DailyFats) },
+        ];
+
+        progressBars.forEach(pb => {
+            const progressElement = document.getElementById(pb.id);
+            const currentValue = parseInt(progressElement.getAttribute("value"));
+            const maxValue = pb.max;
+
+            if (currentValue > maxValue) {
+                progressElement.classList.add("over-limit");
+            }
+        });
+    });
+</script>
+
+<style>
+
+/* Hlavní kontejner pro rozložení */
+.main-container {
+    display: flex;
+    justify-content: space-between; /* Rozložení na dvě části (vlevo, vpravo) */
+    gap: 40px;
+}
+
+/* Levá část s progressbary */
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+/* Pravá část s formuláři a tlačítky */
+.actions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 300px; /* Omezí šířku pravé části */
+    flex-shrink: 0; /* Zamezí zúžení pravé části */
+}
+
+/* Progress bar */
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+progress {
+    width: 100%;
+    height: 20px;
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+            background-color: #014d18;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+progress.over-limit::-webkit-progress-value {
+    background-color: #f55b5b;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+span {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Tlačítka */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+        background-color: #014d18; /* Pastelová zelená */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #88c5a0; /* Tmavší pastelová zelená */
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05); /* Mírné zvětšení při zaměření */
+}
+
+</style>

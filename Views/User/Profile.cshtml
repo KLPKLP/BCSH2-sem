@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@{
+    ViewData["Title"] = "Profil uživatele";
+}
+
+<div>
+    <h2>@Model.Name</h2>
+    <p><strong>Login:</strong> @Model.Login</p>
+    <p><strong>Datum narození:</strong> @Model.DateOfBirth.ToString("d")</p>
+    <p><strong>Pohlaví:</strong> @Model.Gender</p>
+    <p><strong>Výška:</strong> @Model.Height cm</p>
+    <p><strong>Váha:</strong> @Model.Weight kg</p>
+    <p><strong>Můj cíl:</strong> @Model.MyGoal</p>
+  
+    <p><strong>Denní kalorie:</strong> @Model.DailyCalories</p>
+    <p><strong>Denní proteiny:</strong> @Model.DailyProteins</p>
+    <p><strong>Denní sacharidy:</strong> @Model.DailyCarbs</p>
+    <p><strong>Denní tuky:</strong> @Model.DailyFats</p>
+
+
+</div>
+
+<a href="/User/Edit">Upravit údaje</a>
+
+
+<a asp-action="Logout" asp-controller="Auth">Odhlásit se</a>

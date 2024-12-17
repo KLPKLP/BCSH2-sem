@@ -1,0 +1,45 @@
+﻿
+
+@model BCSH2_SEM.Models.Ingredient
+
+
+
+@{
+    ViewBag.Title = "Přidat ingredienci";
+}
+
+<h1>Přidat novou ingredienci</h1>
+<p>Zadejte nutriční hodnoty na 100 g</p>
+
+@using (Html.BeginForm("Add", "Ingredient", FormMethod.Post))
+{
+   
+    <div>
+        <label for="Name">Název</label>
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div>
+        <label for="Calories">Kalorie</label>
+        @Html.TextBoxFor(m => m.Calories)
+        @Html.ValidationMessageFor(m => m.Calories)
+    </div>
+    <div>
+        <label for="Proteins">Bílkoviny</label>
+        @Html.TextBoxFor(m => m.Proteins, new { type = "number", step = "any" })
+        @Html.ValidationMessageFor(m => m.Proteins)
+    </div>
+    <div>
+        <label for="Carbs">Sacharidy</label>
+        @Html.TextBoxFor(m => m.Carbs, new { type = "number", step = "any" })
+        @Html.ValidationMessageFor(m => m.Carbs)
+    </div>
+    <div>
+        <label for="Fats">Tuky</label>
+        @Html.TextBoxFor(m => m.Fats, new { type = "number", step = "any" })
+        @Html.ValidationMessageFor(m => m.Fats)
+    </div>
+    <div>
+        <button type="submit">Přidat</button>
+    </div>
+}

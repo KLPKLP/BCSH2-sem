@@ -1,0 +1,50 @@
+﻿@* @model BCSH2_SEM.Models.Recipe
+
+<h1>@Model.Name</h1>
+<p>@Model.Popis</p>
+
+<h2>Suroviny</h2>
+<ul>
+    @foreach (var ingredient in Model.Ingredients)
+    {
+        <li>
+            @ingredient.Ingredient.Name: @ingredient.Quantity g
+        </li>
+    }
+</ul>
+
+<a asp-action="Index">Zpět na výpis receptů</a>
+ *@
+
+ @model BCSH2_SEM.Models.Recipe
+
+<h1>@Model.Name</h1>
+<p>@Model.Popis</p>
+
+<h2>Suroviny</h2>
+<ul>
+    @foreach (var ingredient in Model.Ingredients)
+    {
+        <li>
+            @ingredient.Ingredient.Name: @ingredient.Quantity g
+        </li>
+    }
+</ul>
+
+<h2>Nutriční hodnoty</h2>
+<table>
+    <tr>
+        <th>Kalorie</th>
+        <th>Bílkoviny</th>
+        <th>Sacharidy</th>
+        <th>Tuky</th>
+    </tr>
+    <tr>
+        <td>@Model.TotalCalories.ToString("F2") kcal</td>
+        <td>@Model.TotalProteins.ToString("F2") g</td>
+        <td>@Model.TotalCarbs.ToString("F2") g</td>
+        <td>@Model.TotalFats.ToString("F2") g</td>
+    </tr>
+</table>
+
+<a asp-action="Index">Zpět na výpis receptů</a>

@@ -1,0 +1,56 @@
+﻿@model List<BCSH2_SEM.Models.Ingredient>
+
+<h2>Vytvořit recept</h2>
+
+@* <form asp-action="Create" method="get">
+    <div>
+        <label for="search">Vyhledat ingredience</label>
+        <input type="text" id="search" name="search" value="@ViewData["SearchTerm"]" placeholder="Search for ingredients" />
+        <button type="submit">Vyhledat</button>
+    </div>
+</form> *@
+
+<form asp-action="Create" method="post">
+    <div>
+        <label for="name">Název receptu</label>
+        <input type="text" id="name" name="name" required />
+    </div>
+
+    <div>
+        <label for="description">Popis</label>
+        <textarea id="description" name="description"></textarea>
+    </div>
+
+    <div id="ingredient-list">
+        <h3>Ingredience</h3>
+        @foreach (var ingredient in Model)
+        {
+            <div>
+                <input type="checkbox" id="ingredient-@ingredient.Id" name="selectedIngredients" value="@ingredient.Id" />
+                <label for="ingredient-@ingredient.Id">@ingredient.Name</label>
+                <input type="number" id="quantity-@ingredient.Id" name="quantities[@ingredient.Id]" placeholder="Množství v gramech" min="1" />
+            </div>
+        }
+    </div>
+
+    @*Přidání suroviny*@
+    <div>
+        <a href="@Url.Action("Add", "Ingredient")">Přidat novou surovinu</a>
+    </div>
+
+    <button type="submit">Uložit</button>
+</form>
+
+<script>
+    // automatické zaškrtnutí checkboxu při zadání množství
+    document.querySelectorAll('input[type="number"]').forEach(function (input) {
+        input.addEventListener('input', function () {
+            var checkbox = document.getElementById('ingredient-' + this.id.split('-')[1]);
+            if (this.value && this.value > 0) {
+                checkbox.checked = true;
+            } else {
+                checkbox.checked = false;
+            }
+        });
+    });
+</script>

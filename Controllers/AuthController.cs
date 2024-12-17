@@ -1,4 +1,5 @@
 ﻿using BCSH2_SEM.Database;
+using BCSH2_SEM.Methods;
 using BCSH2_SEM.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,14 @@ namespace BCSH2_SEM.Controllers
     public class AuthController : Controller
     {
         private readonly DatabaseService _databaseService;
+        private readonly CaloriesCalculator _caloriesCalculator;
+
 
         public AuthController()
         {
             _databaseService = new DatabaseService();
+            _caloriesCalculator = new CaloriesCalculator();
+
         }
 
         public IActionResult Login()
@@ -20,13 +25,15 @@ namespace BCSH2_SEM.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(string  login, string password) 
+        public IActionResult Login(string login, string password)
         {
+            
             var user = _databaseService.Users.FindOne(u => u.Login == login);
 
             if (user != null && user.VerifyPassword(password))
             {
-                return RedirectToAction("Index", "Home"); //zmenit casem na hlavni stranka / muj ucet
+                HttpContext.Session.SetString("UserId", user.Id.ToString()); //uložení id do session
+                return RedirectToAction("Index", "MainPage"); 
             }
 
             ViewBag.Error = "Neplatné přihlašovací údaje";
@@ -41,9 +48,9 @@ namespace BCSH2_SEM.Controllers
 
         [HttpPost]
         public IActionResult Register(string name, string login, string password,
-            DateOnly dateOfBirth, Gender gender, double height, double weight)
+            DateOnly dateOfBirth, Gender gender, double height, double weight, Goal goal)
         {
-            
+
             bool userExist = _databaseService.Users.Exists(u => u.Login == login);
             if (userExist)
             {
@@ -53,97 +60,53 @@ namespace BCSH2_SEM.Controllers
 
             var newUser = new User
             {
+               
                 Name = name,
                 Login = login,
                 DateOfBirth = dateOfBirth,
                 Gender = gender,
                 Height = height,
-                Weight = weight
+                Weight = weight,
+                MyGoal = goal
             };
+
+
+
+            var test = newUser.Id; //????
 
             newUser.SetPassword(password);
             _databaseService.Users.Insert(newUser);
+
+
+            // Vypočítání BMR
+            double bmr = _caloriesCalculator.BMR(newUser.Weight, newUser.Height, newUser.DateOfBirth.ToDateTime(TimeOnly.MinValue), newUser.Gender);
+
+            // Vypočítání denního příjmu kalorií
+            newUser.DailyCalories = _caloriesCalculator.CalorieIntake(bmr, newUser.MyGoal);
+
+            // Vypočítání doporučených živin
+            _caloriesCalculator.Nutritions(newUser.MyGoal, newUser.DailyCalories, out double protein, out double carbs, out double fats);
+
+            // Nastavení denních živin
+            newUser.DailyProteins = protein;
+            newUser.DailyCarbs = carbs;
+            newUser.DailyFats = fats;
+
+            // Aktualizace dat uživatele v databázi
+            _databaseService.Users.Update(newUser);
+
 
             return RedirectToAction("Login");
 
         }
 
-            /*
-
-            // GET: AuthController
-            public ActionResult Index()
-            {
-                return View();
-            }
-
-            // GET: AuthController/Details/5
-            public ActionResult Details(int id)
-            {
-                return View();
-            }
-
-            // GET: AuthController/Create
-            public ActionResult Create()
-            {
-                return View();
-            }
-
-            // POST: AuthController/Create
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public ActionResult Create(IFormCollection collection)
-            {
-                try
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-                catch
-                {
-                    return View();
-                }
-            }
-
-            // GET: AuthController/Edit/5
-            public ActionResult Edit(int id)
-            {
-                return View();
-            }
-
-            // POST: AuthController/Edit/5
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public ActionResult Edit(int id, IFormCollection collection)
-            {
-                try
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-                catch
-                {
-                    return View();
-                }
-            }
-
-            // GET: AuthController/Delete/5
-            public ActionResult Delete(int id)
-            {
-                return View();
-            }
-
-            // POST: AuthController/Delete/5
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public ActionResult Delete(int id, IFormCollection collection)
-            {
-                try
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-                catch
-                {
-                    return View();
-                }
-            }
-            */
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear(); 
+            return RedirectToAction("Login", "Auth"); 
         }
+
+
+
+    }
 }

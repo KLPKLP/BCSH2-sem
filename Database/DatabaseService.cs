@@ -18,5 +18,7 @@
 
         public ILiteCollection<Ingredient> Ingredients => _database.GetCollection<Ingredient>("ingredients");
 
+        public ILiteCollection<RecipeIngredient> RecipeIngredients => _database.GetCollection<RecipeIngredient>("recipeingredients");
+
     }
 }

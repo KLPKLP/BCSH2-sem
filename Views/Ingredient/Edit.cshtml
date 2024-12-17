@@ -1,0 +1,42 @@
+﻿@model BCSH2_SEM.Models.Ingredient
+
+@{
+    ViewBag.Title = "Upravit ingredienci";
+}
+
+<h1>Upravit ingredienci</h1>
+<h2>Změňte nutriční hodnoty na 100 g</h2>
+
+@using (Html.BeginForm("Edit", "Ingredient", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div>
+        <label for="Name">Název</label>
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div>
+        <label for="Calories">Kalorie</label>
+        @Html.TextBoxFor(m => m.Calories, new { type = "number" })
+        @Html.ValidationMessageFor(m => m.Calories)
+    </div>
+    <div>
+        <label for="Proteins">Bílkoviny</label>
+        @Html.TextBoxFor(m => m.Proteins, new { type = "number" })
+        @Html.ValidationMessageFor(m => m.Proteins)
+    </div>
+    <div>
+        <label for="Carbs">Sacharidy</label>
+        @Html.TextBoxFor(m => m.Carbs, new { type = "number" })
+        @Html.ValidationMessageFor(m => m.Carbs)
+    </div>
+    <div>
+        <label for="Fats">Tuky</label>
+        @Html.TextBoxFor(m => m.Fats, new { type = "number" })
+        @Html.ValidationMessageFor(m => m.Fats)
+    </div>
+    <div>
+        <button type="submit">Uložit</button>
+    </div>
+}

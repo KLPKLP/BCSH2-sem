@@ -1,0 +1,47 @@
+﻿@* @model List<BCSH2_SEM.Models.Recipe>
+
+<h1>Seznam receptů</h1>
+
+<a asp-action="Create" asp-controller="Recipes">Přidat nový recept</a>
+
+
+<ul>
+    @foreach (var recipe in Model)
+    {
+        <li>
+            <a asp-action="Details" asp-route-id="@recipe.Id">@recipe.Name</a>
+        </li>
+    }
+</ul>
+ *@
+
+ @model List<BCSH2_SEM.Models.Recipe>
+
+<h1>Seznam receptů</h1>
+
+<a asp-action="Create" asp-controller="Recipes" >Přidat nový recept</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Název receptu</th>
+            <th>Akce</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var recipe in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@recipe.Id">@recipe.Name</a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@recipe.Id" class="btn btn-edit">Editovat</a>
+                    <form asp-action="Delete" asp-route-id="@recipe.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-delete" onclick="return confirm('Opravdu chcete smazat tento recept?');">Smazat</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

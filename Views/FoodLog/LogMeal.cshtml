@@ -1,0 +1,135 @@
+﻿@* @{
+    ViewBag.Title = "Zaznamenat jídlo";
+}
+
+<h2>Zaznamenat jídlo</h2>
+
+<form asp-action="LogMeal" method="post">
+    <h3>Vyberte, co chcete přidat:</h3>
+
+    <div>
+        <h4>Surovina</h4>
+        <label for="ingredientId">Surovina:</label>
+        <select name="ingredientId" id="ingredientId">
+            @foreach (var ingredient in ViewBag.Ingredients)
+            {
+                <option value="@ingredient.Id">@ingredient.Name</option>
+            }
+        </select>
+
+        <label for="ingredientAmount">Množství (g):</label>
+        <input type="number" name="ingredientAmount" id="ingredientAmount" min="1" />
+    </div>
+
+    <div>
+        <h4>Recept</h4>
+        <label for="recipeId">Recept:</label>
+        <select name="recipeId" id="recipeId">
+            @foreach (var recipe in ViewBag.Recipes)
+            {
+                <option value="@recipe.Id">@recipe.Name</option>
+            }
+        </select>
+
+        <label for="recipeAmount">Množství (g):</label>
+        <input type="number" name="recipeAmount" id="recipeAmount" min="1" />
+
+        <label for="isRecipe">Celý recept:</label>
+        <input type="checkbox" name="isRecipe" id="isRecipe" />
+    </div>
+
+    <button type="submit">Přidat jídlo</button>
+</form>
+ *@
+
+@{
+    ViewBag.Title = "Zaznamenat jídlo";
+}
+
+<h2>Zaznamenat jídlo</h2>
+
+<form asp-action="LogMeal" method="post">
+    <h3>Vyberte, co chcete přidat:</h3>
+
+    <div>
+        <label>
+            <input type="radio" name="foodType" value="ingredient" id="selectIngredient" checked /> Surovina
+        </label>
+        <label>
+            <input type="radio" name="foodType" value="recipe" id="selectRecipe" /> Recept
+        </label>
+    </div>
+
+    <div id="ingredientSection">
+        <h4>Surovina</h4>
+        <label for="ingredientId">Surovina:</label>
+        <select name="ingredientId" id="ingredientId">
+            @foreach (var ingredient in ViewBag.Ingredients)
+            {
+                <option value="@ingredient.Id">@ingredient.Name</option>
+            }
+        </select>
+
+        <label for="ingredientAmount">Množství (g):</label>
+        <input type="number" name="ingredientAmount" id="ingredientAmount" min="1" />
+    </div>
+
+    <div id="recipeSection" style="display: none;">
+        <h4>Recept</h4>
+        <label for="recipeId">Recept:</label>
+        <select name="recipeId" id="recipeId">
+            @foreach (var recipe in ViewBag.Recipes)
+            {
+                <option value="@recipe.Id">@recipe.Name</option>
+            }
+        </select>
+
+        <label for="recipeAmount">Množství (g):</label>
+        <input type="number" name="recipeAmount" id="recipeAmount" min="1" />
+
+        <label for="isRecipe">Celý recept:</label>
+        <input type="checkbox" name="isRecipe" id="isRecipe" />
+    </div>
+
+    <button type="submit">Přidat jídlo</button>
+</form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const ingredientSection = document.getElementById("ingredientSection");
+        const recipeSection = document.getElementById("recipeSection");
+        const ingredientRadio = document.getElementById("selectIngredient");
+        const recipeRadio = document.getElementById("selectRecipe");
+
+
+        
+        ingredientRadio.addEventListener("change", function () {
+            if (this.checked) {
+                ingredientSection.style.display = "block";
+                recipeSection.style.display = "none";
+                disableSection(recipeSection, true);
+                disableSection(ingredientSection, false);
+            }
+        });
+
+        recipeRadio.addEventListener("change", function () {
+            if (this.checked) {
+                ingredientSection.style.display = "none";
+                recipeSection.style.display = "block";
+                disableSection(ingredientSection, true);
+                disableSection(recipeSection, false);
+            }
+        });
+
+
+
+
+        function disableSection(section, disable) {
+            const inputs = section.querySelectorAll("input, select");
+            inputs.forEach(input => input.disabled = disable);
+        }
+
+        disableSection(ingredientSection, false);
+        disableSection(recipeSection, true);
+    });
+</script>

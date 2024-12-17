@@ -1,0 +1,23 @@
+﻿@model BCSH2_SEM.Models.Ingredient
+
+@{
+    ViewBag.Title = "Smazat ingredienci";
+}
+
+<h1>Smazat ingredienci</h1>
+<p>Opravdu chcete smazat tuto ingredienci?</p>
+
+<div>
+    <strong>@Model.Name</strong><br />
+    Kalorie: @Model.Calories<br />
+    Proteiny: @Model.Proteins<br />
+    Sacharidy: @Model.Carbs<br />
+    Tuky: @Model.Fats
+</div>
+
+@using (Html.BeginForm("Delete", "Ingredient", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit">Ano, smazat</button>
+    <a href="@Url.Action("Index", "Ingredient")">Zrušit</a>
+}
