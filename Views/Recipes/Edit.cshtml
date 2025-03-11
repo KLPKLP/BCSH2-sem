@@ -13,7 +13,12 @@
 
     <div>
         <label for="description">Popis</label>
-        <textarea id="description" name="description">@Model.Popis</textarea>
+        <textarea id="description" name="description">@Model.Description</textarea>
+    </div>
+
+    <div>
+        <input type="checkbox" id="suitableAsLunch" name="suitableAsLunch" value="true" @(Model.SuitableAsLunch ? "checked" : "") />
+        <label for="suitableAsLunch">Recept je vhodný jako oběd</label>
     </div>
 
     <div id="ingredient-list">
@@ -29,11 +34,12 @@
                 <label for="ingredient-@ingredient.Id">@ingredient.Name</label>
 
 
-                <input type="number" id="quantity-@ingredient.Id" name="quantities[@ingredient.Id]" placeholder="Množství v gramech" min="1"
+                <input type="number" id="quantity-@ingredient.Id" name="quantities[@ingredient.Id]" placeholder="Množství v gramech" min="0"
                        value="@(existingIngredient != null ? existingIngredient.Quantity : 0)" />
             </div>
         }
     </div>
+
 
     <button type="submit">Uložit změny</button>
 </form>

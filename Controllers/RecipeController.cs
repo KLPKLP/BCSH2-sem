@@ -21,18 +21,19 @@ namespace BCSH2_SEM.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(string name, string description, List<int> selectedIngredients, Dictionary<int, double> quantities)
+        public IActionResult Create(string name, string description, List<int> selectedIngredients, Dictionary<int, double> quantities, bool suitableAsLunch = false) // Výchozí hodnota pro bool suitableAsLunch
         {
           
             var recipe = new Recipe
             {
                 Name = name,
-                Popis = description,
+                Description = description,
                 Ingredients = selectedIngredients.Select(id => new RecipeIngredient
                 {
                     Ingredient = _db.Ingredients.FindById(id),
                     Quantity = quantities.ContainsKey(id) ? quantities[id] : 0 // Použití zadaného množství
-                }).ToList()
+                }).ToList(),
+                SuitableAsLunch = suitableAsLunch
             };
 
             
@@ -77,7 +78,7 @@ namespace BCSH2_SEM.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, string name, string description, List<int> selectedIngredients, Dictionary<int, double> quantities)
+        public IActionResult Edit(int id, string name, string description, List<int> selectedIngredients, Dictionary<int, double> quantities, bool suitableAsLunch = false)
         {
             var recipe = _db.Recipes.FindById(id);
             if (recipe == null)
@@ -87,7 +88,7 @@ namespace BCSH2_SEM.Controllers
 
             // Aktualizace názvu a popisu
             recipe.Name = name;
-            recipe.Popis = description;
+            recipe.Description = description;
 
             // Aktualizace ingrediencí
             recipe.Ingredients = selectedIngredients.Select(ingredientId => new RecipeIngredient
@@ -95,6 +96,8 @@ namespace BCSH2_SEM.Controllers
                 Ingredient = _db.Ingredients.FindById(ingredientId),
                 Quantity = quantities.ContainsKey(ingredientId) ? quantities[ingredientId] : 0
             }).ToList();
+
+            recipe.SuitableAsLunch = suitableAsLunch;
 
             // Uložení změn
             _db.Recipes.Update(recipe);

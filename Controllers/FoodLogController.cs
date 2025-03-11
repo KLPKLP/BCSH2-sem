@@ -66,7 +66,7 @@ namespace BCSH2_SEM.Controllers
             }
             else //if (recipeId.HasValue && isRecipe)
             {
-                Console.WriteLine("jsem recept");
+                //Console.WriteLine("jsem recept");
                 var recipe = _databaseService.Recipes.FindOne(r => r.Id == recipeId.Value);
                 if (recipe != null && recipeAmount.HasValue)
                 {
@@ -89,20 +89,20 @@ namespace BCSH2_SEM.Controllers
             user.ConsumedCarbs += consumedCarbs;
             user.ConsumedFats += consumedFats;
 
-            Console.WriteLine("Calories: " + consumedCalories);
-            Console.WriteLine("Blkoviny: " +consumedProteins);
-            Console.WriteLine("Sacharid: " + consumedCarbs);
-            Console.WriteLine("tuky: " + consumedFats);
+            //Console.WriteLine("Calories: " + consumedCalories);
+            //Console.WriteLine("Blkoviny: " +consumedProteins);
+            //Console.WriteLine("Sacharid: " + consumedCarbs);
+            //Console.WriteLine("tuky: " + consumedFats);
 
-            Console.WriteLine("-------po update--------");
+            //Console.WriteLine("-------po update--------");
 
             _databaseService.Users.Update(user);
 
 
-            Console.WriteLine("Calories: " + user.ConsumedCalories);
-            Console.WriteLine("Blkoviny: " + user.ConsumedProteins);
-            Console.WriteLine("Sacharid: " + user.ConsumedCarbs);
-            Console.WriteLine("tuky: " + user.ConsumedFats);
+            //Console.WriteLine("Calories: " + user.ConsumedCalories);
+            //Console.WriteLine("Blkoviny: " + user.ConsumedProteins);
+            //Console.WriteLine("Sacharid: " + user.ConsumedCarbs);
+            //Console.WriteLine("tuky: " + user.ConsumedFats);
 
             return RedirectToAction("Index", "MainPage");
         }

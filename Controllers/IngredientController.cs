@@ -30,6 +30,7 @@ namespace BCSH2_SEM.Controllers
         [HttpPost]
         public ActionResult Add(Ingredient ingredient)
         {
+            // DEBUG! Vypsání chybové hlášky
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
