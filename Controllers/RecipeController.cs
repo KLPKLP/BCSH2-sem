@@ -15,8 +15,8 @@ namespace BCSH2_SEM.Controllers
 
         public IActionResult Create()
         {
-
-            var ingredients = _db.Ingredients.FindAll().OrderBy(i => i.Name).ToList();
+            
+            var ingredients = _db.Ingredients.FindAll().ToList();
             return View(ingredients); 
         }
 

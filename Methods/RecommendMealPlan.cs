@@ -7,7 +7,7 @@
         private readonly DatabaseService _db;
         private readonly EvaluateMealPlan evaluateMealPlan;
         private readonly Dictionary<int, Func<IEnumerable<Recipe>>> mealFilters;
-
+        
         /*
          Snídaně: 20 %
 
@@ -39,7 +39,7 @@
         public RecommendMealPlan(int numberOfMeals)
         {
             NumberOfMeals = numberOfMeals;
-
+           
             if (NumberOfMeals == 3)
             {
                 BreakfastPortion = 0.275;
@@ -56,7 +56,7 @@
                 LunchPortion = 0.35;
                 DinnerPortion = 0.3;
                 FirstSnackPortion = 0.1;
-
+            
                 mealTypes.Add(IndexOfBreakfast);
                 mealTypes.Add(IndexOfFirstSnack);
                 mealTypes.Add(IndexOfLunch);
@@ -82,7 +82,7 @@
                 throw new InvalidOperationException("Neplatný počet jídel v jídelníčku");
             }
 
-            _db = new();
+                _db = new();
             evaluateMealPlan = new();
             mealFilters = new()
             {
@@ -144,7 +144,7 @@
                 sizesOfPortions.Add(SecondSnackPortion);
             }
 
-
+            
 
             for (int i = 0; i < orderOfReccomending.Count(); i++)
             {
@@ -155,7 +155,7 @@
                     var meal = RecommendMeal(sizesOfPortions[i], remainingCalories, remainingCarbs, remainingProteins, remainingFats, mealFilters[mealIndex]);
                     mealPlan.SetMeal(mealIndex, meal);
                     remainingCalories -= meal.Recipe.TotalCalories * meal.Portion;
-                    remainingCarbs -= meal.Recipe.TotalCarbs * meal.Portion;
+                     remainingCarbs -= meal.Recipe.TotalCarbs * meal.Portion;
                     remainingFats -= meal.Recipe.TotalFats * meal.Portion;
                     remainingProteins -= meal.Recipe.TotalProteins * meal.Portion;
 
@@ -194,7 +194,7 @@
             //    list = _db.Recipes.FindAll().ToList();
             //}
 
-
+           
 
 
             foreach (var recipe in listOfRecipes)
