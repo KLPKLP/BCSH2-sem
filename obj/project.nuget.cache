@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0Ypn7qA6vBX+orZ6XhXW8fQqfhGUOegeL2cz7S+y0h6yBzDAaY6mzi/YcWz/9npzOCcD7ILkad3t7uC2wYYfnw==",
+  "dgSpecHash": "nxHeAVS5I4U6YfI3gwsef7WtWatEOJYXtyEjsfMI/hEDxR6bimf80QpiqMivOMVI6ZnDxRHNQ4menfbMlGyKYg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\klara\\source\\repos\\BCSH2\\BCSH2-Sem\\BCSH2-SEM.csproj",
+  "projectFilePath": "C:\\Users\\klara\\SynologyDrive\\UPCE_FEI\\Bakalářka\\BCSH2-Sem\\BCSH2-SEM.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\klara\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\klara\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

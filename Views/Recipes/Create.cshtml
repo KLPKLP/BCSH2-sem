@@ -2,13 +2,7 @@
 
 <h2>Vytvořit recept</h2>
 
-@* <form asp-action="Create" method="get">
-    <div>
-        <label for="search">Vyhledat ingredience</label>
-        <input type="text" id="search" name="search" value="@ViewData["SearchTerm"]" placeholder="Search for ingredients" />
-        <button type="submit">Vyhledat</button>
-    </div>
-</form> *@
+
 
 <form asp-action="Create" method="post">
     <div>
@@ -21,7 +15,8 @@
         <textarea id="description" name="description"></textarea>
     </div>
 
-    <div id="ingredient-list">
+    @* Původní ingredience *@
+  @*   <div id="ingredient-list">
         <h3>Ingredience</h3>
         @foreach (var ingredient in Model)
         {
@@ -31,26 +26,103 @@
                 <input type="number" id="quantity-@ingredient.Id" name="quantities[@ingredient.Id]" placeholder="Množství v gramech" min="1" />
             </div>
         }
+    </div> *@
+
+    @*Hledání*@
+@*     <div>
+        <label for="search">Vyhledat ingredienci:</label>
+        <input type="text" id="search" placeholder="Název ingredience" />
     </div>
+ *@
+
+    @*Nový výpis ingredience*@
+
+    <div id="ingredient-list">
+        <h3>Ingredience</h3>
+        <input type="text" id="search" placeholder="Vyhledat ingredienci" />
+        <div class="ingredient-scrollbox">
+            @foreach (var ingredient in Model)
+            {
+                <div class="ingredient-item" data-name="@ingredient.Name">
+                    <div>
+                        <input type="checkbox" id="ingredient-@ingredient.Id" name="selectedIngredients" value="@ingredient.Id" />
+                        <label for="ingredient-@ingredient.Id">@ingredient.Name</label>
+                    </div>
+                    <input type="number" id="quantity-@ingredient.Id" name="quantities[@ingredient.Id]" placeholder="Množství v gramech" min="1" />
+                </div>
+            }
+        </div>
+    </div>
+
+
+    <div>
+        <input type="checkbox" id="suitableAsBreakfast" name="suitableAsBreakfast" value="true" />
+        <label for="suitableAsBreakfast">Recept je vhodný jako snídaně</label>
+    </div>
+      <div>
+        <input type="checkbox" id="suitableAsSnack" name="suitableAsSnack" value="true" />
+        <label for="suitableAsSnack">Recept je vhodný jako svačina</label>
+    </div>
+      <div>
+        <input type="checkbox" id="suitableAsLunch" name="suitableAsLunch" value="true" />
+        <label for="suitableAsLunch">Recept je vhodný jako oběd</label>
+    </div>
+    <div>
+        <input type="checkbox" id="suitableAsDinner" name="suitableAsDinner" value="true" />
+        <label for="suitableAsDinner">Recept je vhodný jako večeře</label>
+    </div>
+
 
     @*Přidání suroviny*@
     <div>
         <a href="@Url.Action("Add", "Ingredient")">Přidat novou surovinu</a>
     </div>
 
-    <button type="submit">Uložit</button>
+    <button type="submit" id="submitButton" disabled>Uložit</button>
 </form>
 
-<script>
+
+<script src="~/js/site.js"></script>
+
+<script> //TODO: Přesunout do site.css
     // automatické zaškrtnutí checkboxu při zadání množství
-    document.querySelectorAll('input[type="number"]').forEach(function (input) {
-        input.addEventListener('input', function () {
-            var checkbox = document.getElementById('ingredient-' + this.id.split('-')[1]);
-            if (this.value && this.value > 0) {
-                checkbox.checked = true;
-            } else {
-                checkbox.checked = false;
-            }
-        });
-    });
+    // document.querySelectorAll('input[type="number"]').forEach(function (input) {
+    //     input.addEventListener('input', function () {
+    //         var checkbox = document.getElementById('ingredient-' + this.id.split('-')[1]);
+    //         if (this.value && this.value > 0) {
+    //             checkbox.checked = true;
+    //         } else {
+    //             checkbox.checked = false;
+    //         }
+    //         window.moveCheckedIngredients('.ingredient-item', 'input[type="checkbox"]');
+     
+    //     });
+    // });
+
+
+    // KOntrola, zda je zaškrutnuto ale spoň jedno "recept je vhodný..."
+    // const checkboxes = document.querySelectorAll('#suitableAsBreakfast, #suitableAsLunch, #suitableAsDinner, #suitableAsSnack');
+    // const submitButton = document.getElementById('submitButton');
+
+    // function validateCheckboxes() {
+    //     let atLeastOneChecked = Array.from(checkboxes).some(cb => cb.checked);
+    //     submitButton.disabled = !atLeastOneChecked;
+    // }
+
+
+    // checkboxes.forEach(cb => cb.addEventListener('change', validateCheckboxes));
+
+    // Inicializace kontroly při načtení stránky
+    window.addEventListener('DOMContentLoaded', validateCheckboxes);
+
+
+    // posunutí zaškrtnutých položek
+    window.moveCheckedIngredients('.ingredient-item', 'input[type="checkbox"]');
+
+    //Hledání
+   window.liveSearch('search', '.ingredient-item', 'data-name');
+
+    window.autoCheckIngredients();
+    window.validateCheckboxes();
+
 </script>

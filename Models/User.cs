@@ -17,7 +17,7 @@ namespace BCSH2_SEM.Models
 
         public LiteDB.ObjectId Id { get; set; } //
         public string Name { get; set; }
-        public string Login { get; set; } //jedinečný id?
+        public string Login { get; set; } //jedinečné id?
         public string PasswordHash { get; set; }
 
         public DateOnly DateOfBirth { get; set; }

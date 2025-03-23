@@ -1,0 +1,80 @@
+﻿
+
+ <h2>Tvůj jídelníček</h2>
+
+@if (Model != null)
+{
+    double totalCalories = 0;
+    double totalProteins = 0;
+    double totalCarbs = 0;
+    double totalFats = 0;
+
+    <table>
+        <thead>
+            <tr>
+                <th>Jídlo</th>
+                <th>Porce</th>
+                <th>Kalorie</th>
+                <th>Bílkoviny</th>
+                <th>Sacharidy</th>
+                <th>Tuky</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var meal in Model.DailyMeals)
+            {
+                var portion = meal.Portion;
+                var recipe = meal.Recipe;
+                var mealCalories = portion * recipe.TotalCalories;
+                var mealProteins = portion * recipe.TotalProteins;
+                var mealCarbs = portion * recipe.TotalCarbs;
+                var mealFats = portion * recipe.TotalFats;
+
+                totalCalories += mealCalories;
+                totalProteins += mealProteins;
+                totalCarbs += mealCarbs;
+                totalFats += mealFats;
+
+                <tr>
+                    @* <td>@recipe.Name</td> *@
+                    <td>
+                        <!-- Portion debug: @portion -->
+                        <!-- Portion debug: @meal.Portion -->
+                        <!--Portion debug: -->
+
+
+                       @*  <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.Id" asp-route-portion="@meal.Portion">
+                            @recipe.Name
+                        </a> *@
+
+                        <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.Id"
+                           asp-route-portion="@meal.Portion.ToString(System.Globalization.CultureInfo.InvariantCulture)">
+                            @recipe.Name
+                        </a>
+
+
+                    </td>
+                    <td>@portion.ToString("0.##")</td>
+                    <td>@mealCalories.ToString("0.##") kcal</td>
+                    <td>@mealProteins.ToString("0.##") g</td>
+                    <td>@mealCarbs.ToString("0.##") g</td>
+                    <td>@mealFats.ToString("0.##") g</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr style="font-weight:bold;">
+                <td>Celkem</td>
+                <td>-</td>
+                <td>@totalCalories.ToString("0.##") kcal</td>
+                <td>@totalProteins.ToString("0.##") g</td>
+                <td>@totalCarbs.ToString("0.##") g</td>
+                <td>@totalFats.ToString("0.##") g</td>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <p>Nebyly nalezeny žádné pokrmy.</p>
+}

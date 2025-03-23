@@ -1,0 +1,40 @@
+﻿@model BCSH2_SEM.Models.MealPlan
+@{
+    ViewData["Title"] = "Generátor jídelníčku";
+}
+
+<h2>Generátor jídelníčku</h2>
+
+@if (Model == null)
+{
+    <form method="post">
+        <p>Kolik jídel chcete vygenerovat?</p>
+        <label><input type="radio" name="numberOfMeals" value="3" checked /> 3 jídla (snídaně, oběd, večeře)</label><br />
+        <label><input type="radio" name="numberOfMeals" value="4" /> 4 jídla (svačina dopoledne)</label><br />
+        <label><input type="radio" name="numberOfMeals" value="5" /> 5 jídel (svačina dopoledne a odpoledne)</label><br /><br />
+
+        <button type="submit">Vygenerovat jídelníček</button>
+    </form>
+
+    @if (ViewBag.Error != null)
+    {
+        <p style="color:red">@ViewBag.Error</p>
+    }
+}
+else
+{
+    <h3>Váš jídelníček:</h3>
+    <ul>
+        @foreach (var meal in Model.DailyMeals)
+        {
+            if (meal != null)
+            {
+                <li>@meal.Recipe.Name – Porce: @meal.Portion</li>
+            }
+        }
+    </ul>
+
+    <form method="get">
+        <button type="submit">Zpět</button>
+    </form>
+}

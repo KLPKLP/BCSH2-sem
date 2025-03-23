@@ -23,17 +23,17 @@
     </div>
     <div>
         <label for="Proteins">Bílkoviny</label>
-        @Html.TextBoxFor(m => m.Proteins, new { type = "number" })
+        @Html.EditorFor(m => m.Proteins, new { type = "number", step = "0.01", lang = "cs" })
         @Html.ValidationMessageFor(m => m.Proteins)
     </div>
     <div>
         <label for="Carbs">Sacharidy</label>
-        @Html.TextBoxFor(m => m.Carbs, new { type = "number" })
+        @Html.EditorFor(m => m.Carbs, new { type = "number", step = "0.01", lang = "cs" })
         @Html.ValidationMessageFor(m => m.Carbs)
     </div>
     <div>
         <label for="Fats">Tuky</label>
-        @Html.TextBoxFor(m => m.Fats, new { type = "number" })
+        @Html.EditorFor(m => m.Fats, new { type = "number", step = "0.01", lang = "cs" })
         @Html.ValidationMessageFor(m => m.Fats)
     </div>
     <div>

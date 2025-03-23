@@ -70,7 +70,7 @@ a {
     text-decoration: none;
 }
 
-  /*  a:hover {
+/*  a:hover {
         color: #FFD5A5; 
         text-decoration: underline;
     }*/
@@ -131,7 +131,7 @@ table {
     border-collapse: collapse;
     margin: 20px 0;
     font-size: 1rem;
-  /*  background-color: #FFF7AE;*/ /* Pastelová žlutá */
+    /*  background-color: #FFF7AE;*/ /* Pastelová žlutá */
 }
 
 th, td {
@@ -226,6 +226,39 @@ button {
         background-color: #B8E3E6; /* Pastelová modrá */
     }
 
-        button[type="submit"]:nth-of-type(2):hover {
+ button[type="submit"]:nth-of-type(2):hover {
             background-color: #96cdd1; /* Tmavší pastelová modrá */
         }
+
+
+
+        /*Ingredience - pøidávání receptu*/
+
+.ingredient-scrollbox {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.ingredient-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+ .ingredient-item input[type="number"] {
+        width: 150px;
+        margin-left: 10px;
+    }
+
+
+
+/* Tøída pro skrytí položek */
+.hidden {
+    display: none !important;
+}
+

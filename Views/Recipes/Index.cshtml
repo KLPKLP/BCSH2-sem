@@ -21,6 +21,8 @@
 
 <a asp-action="Create" asp-controller="Recipes" >Přidat nový recept</a>
 
+<input type="text" id="search" placeholder="Vyhledat recept" />
+ 
 <table>
     <thead>
         <tr>
@@ -31,7 +33,7 @@
     <tbody>
         @foreach (var recipe in Model)
         {
-            <tr>
+            <tr class="recipe-row" data-name="@recipe.Name">
                 <td>
                     <a asp-action="Details" asp-route-id="@recipe.Id">@recipe.Name</a>
                 </td>
@@ -45,3 +47,9 @@
         }
     </tbody>
 </table>
+
+<script src="~/js/site.js"></script>
+<script>
+
+    window.liveSearch("search", ".recipe-row", "data-name");
+</script>

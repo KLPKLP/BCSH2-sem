@@ -16,6 +16,15 @@ namespace BCSH2_SEM
                 SupportedUICultures = new List<CultureInfo> { defaultCulture }
             };
 
+
+            // Culture info:
+            var cultureInfo = new CultureInfo("cs-CZ");
+            cultureInfo.NumberFormat.NumberDecimalSeparator = ",";
+
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddSession(); //povolit session

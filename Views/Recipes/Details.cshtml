@@ -16,35 +16,100 @@
 <a asp-action="Index">Zpět na výpis receptů</a>
  *@
 
+@*MODEL = RECEPT*@
+@* 
  @model BCSH2_SEM.Models.Recipe
+@{
+	double portion = ViewBag.Portion != null ? (double)ViewBag.Portion : 1;
+	<!-- Portion debug: @portion -->
+}
 
 <h1>@Model.Name</h1>
-<p>@Model.Popis</p>
+<p>@Model.Description</p>
 
 <h2>Suroviny</h2>
 <ul>
-    @foreach (var ingredient in Model.Ingredients)
-    {
-        <li>
-            @ingredient.Ingredient.Name: @ingredient.Quantity g
-        </li>
-    }
-</ul>
+	@foreach (var ingredient in Model.Ingredients)
+	{
+		double adjustedQuantity = ingredient.Quantity * portion;
+		<li>
+			
+			@ingredient.Ingredient.Name: @adjustedQuantity g
 
-<h2>Nutriční hodnoty</h2>
+		</li>
+	}
+</ul>
+@{
+	double adjustedCalories = portion * Model.TotalCalories;
+	double adjustedCarbs = portion * Model.TotalCarbs; ;
+	double adjustedFats = portion * Model.TotalFats; ;
+	double adjustedProteins = @Model.TotalProteins * portion;
+}
+<h2>Celkokvé nutriční hodnoty</h2>
 <table>
-    <tr>
-        <th>Kalorie</th>
-        <th>Bílkoviny</th>
-        <th>Sacharidy</th>
-        <th>Tuky</th>
-    </tr>
-    <tr>
-        <td>@Model.TotalCalories.ToString("F2") kcal</td>
-        <td>@Model.TotalProteins.ToString("F2") g</td>
-        <td>@Model.TotalCarbs.ToString("F2") g</td>
-        <td>@Model.TotalFats.ToString("F2") g</td>
-    </tr>
+	<tr>
+		<th>Kalorie</th>
+		<th>Bílkoviny</th>
+		<th>Sacharidy</th>
+		<th>Tuky</th>
+	</tr>
+	<tr>
+		<td>@adjustedCalories.ToString("F1") kcal</td>
+		<td>@adjustedProteins.ToString("F1") g</td>
+		<td>@adjustedCarbs.ToString("F1") g</td>
+		<td>@adjustedFats.ToString("F1") g</td>
+	</tr>
 </table>
 
 <a asp-action="Index">Zpět na výpis receptů</a>
+ *@
+
+
+
+
+@*MODEL = MEALPORTION*@
+
+ @model BCSH2_SEM.Models.MealPortion
+
+
+<h1>@Model.Recipe.Name</h1>
+<p>@Model.Recipe.Description</p>
+<!-- Portion debug: @Model.Portion -->
+
+
+<h2>Suroviny</h2>
+<ul>
+	@foreach (var ingredient in Model.Recipe.Ingredients)
+	{
+		double adjustedQuantity = ingredient.Quantity * @Model.Portion;
+		<li>
+
+			@ingredient.Ingredient.Name: @adjustedQuantity g
+
+		</li>
+	}
+</ul>
+@{
+	double adjustedCalories = @Model.Portion * Model.Recipe.TotalCalories;
+	double adjustedCarbs = @Model.Portion * Model.Recipe.TotalCarbs; ;
+	double adjustedFats = @Model.Portion * Model.Recipe.TotalFats; ;
+	double adjustedProteins = @Model.Recipe.TotalProteins * @Model.Portion;
+}
+<h2>Celkokvé nutriční hodnoty</h2>
+<table>
+	<tr>
+		<th>Kalorie</th>
+		<th>Bílkoviny</th>
+		<th>Sacharidy</th>
+		<th>Tuky</th>
+	</tr>
+	<tr>
+		<td>@adjustedCalories.ToString("F1") kcal</td>
+		<td>@adjustedProteins.ToString("F1") g</td>
+		<td>@adjustedCarbs.ToString("F1") g</td>
+		<td>@adjustedFats.ToString("F1") g</td>
+	</tr>
+</table>
+
+<a asp-action="Index">Zpět na výpis receptů</a>
+ 
